@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}	
+
+		body {
+			overflow-x:hidden;
+		}	
+
+		#div1 {
+			width: 300px;
+			height: 200px;
+			background: #0cc;
+			position: absolute;
+			right: -300px;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="div1" style="right:-300px;">
+		这是一个弹窗广告
+	</div>
+
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+			var div1 = document.getElementById('div1');
+
+			// 运动参数
+			var time = 2000;//动画过渡时间
+			var offset = 300;//偏移量
+			var interval = 30;//定时器频率
+			var speed = offset / (time / interval); //每次移动的像素数
+			console.log('speed=' + speed);
+
+			/*运动函数*/
+			function go() {
+				
+				var right = parseInt(div1.style.right); //当前位置
+				
+				var newRight = right + speed; 
+
+				// 如果超过目标位置，修正位置，防止误差
+				if (right >= 0) {
+					newRight = 0;
+					clearInterval(timerId);					
+				}
+
+				div1.style.right = newRight + 'px'; //设置新位置
+
+			}
+
+			var timerId = setInterval(go,interval);
+
+		}
+
+	</script>
+</body>
+</html>

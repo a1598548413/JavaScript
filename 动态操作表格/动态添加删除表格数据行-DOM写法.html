@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<table border="1" width="500" id="dataTable">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+		</thead>		
+	</table>
+	<form id="" method="post" action="">
+		<table>
+			<tr>
+				<td>编号</td>
+				<td>
+					<input type="text" id="sid">
+				</td>
+			</tr>
+			<tr>
+				<td>姓名</td>
+				<td>
+					<input type="text" id="sname">
+				</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td>
+					<input type="text" id="sage">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="增加学生" id="addBtn">
+				</td>				
+			</tr>
+		</table>
+		<p id="p1"></p>
+	</form>
+
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+			// 获取表格元素Id
+			var dataTable = document.getElementById('dataTable');
+			var addBtn = document.getElementById('addBtn');		
+
+			// 获取表单元素对象
+			var sid = document.getElementById('sid');
+			var sname = document.getElementById('sname');
+			var sage = document.getElementById('sage');
+
+				
+			// 添加点击事件
+			addBtn.onclick = function() {
+
+				// 增加行
+				var tr = document.createElement('tr');
+				dataTable.appendChild(tr);
+
+				// 添加编号单元格
+				var td = document.createElement('td');
+				tr.appendChild(td);
+				var txt = document.createTextNode(sid.value);
+				td.appendChild(txt);
+				sid.value = '';
+				
+				// 添加姓名单元格
+				td = document.createElement('td');
+				tr.appendChild(td);
+				txt = document.createTextNode(sname.value);
+				td.appendChild(txt);
+				sname.value = '';
+
+				// 添加年龄单元格
+				td = document.createElement('td');
+				tr.appendChild(td);
+				txt = document.createTextNode(sage.value);
+				td.appendChild(txt);
+				sage.value = '';
+
+				// 添加按钮单元格
+				td = document.createElement('td');
+				tr.appendChild(td);
+				var input = document.createElement('input');
+				input.setAttribute('type', 'button');
+				input.setAttribute('value', '删除');				
+				td.appendChild(input);
+
+				// 增加点击事件
+				input.onclick = function() {
+					
+					if ( confirm('确定要删除此行数据') ) {
+						dataTable.removeChild(tr);
+					}
+					
+				}
+
+			}
+		}
+
+	</script>
+</body>
+</html>

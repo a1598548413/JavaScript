@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+/*外层容器开始*/
+#wrapper{
+	width: 1000px;
+	height: 800px;
+	margin: 50px auto;
+	border: 1px solid #ccc;
+	position: relative;
+}
+/*头部开始*/
+#header{
+	width: 1000px;
+	height: 50px;
+	background: #613712;
+	font-size: 24px;
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+/*网页内容开始*/
+#container{
+	width: 550px;
+	height: 500px;
+	position: absolute;
+	top: 150px;
+	left: 225px;
+}
+/*导航开始*/
+#nav{
+	width: 600px;
+	height: 100px;
+	margin-right: -50px; 
+
+}
+/*图片开始*/
+.images{
+	width: 100px;
+	height: 150px;
+	margin-right: 50px;
+	float: left;
+	cursor: pointer;
+	box-sizing:border-box; 
+}
+/*主内容开始*/
+#content{
+	width: 550px;
+	height: 300px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+}
+
+#content span{
+	color: #ccc;
+
+}
+#content a{
+	text-decoration: none;
+}
+
+#content h2{
+	color: green;
+}
+
+#content .size1{
+	text-indent: 2em;
+}
+
+/*结束*/

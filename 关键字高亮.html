@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" placeholder="请输入关键字" id="t1">
+	<input type="button" value="查找" onclick="search();">
+	<div id="container">
+		对象实例成员（对象实例的属性和方法）：是属于具体的某个对象实例，需要通过对象调用
+		静态成员（类成员）：是属于类本身的，不属于任何一个具体的对象实例，需要通过类调用
+		在类中定义静态属性：类名.属性 = 属性值   类名.方法名 = function(){}
+		静态成员在js中只能通过类访问，不能通过对象访问，静态方法中不能访问对象实例成员，但是可以调用静态成员。
+
+		<p>
+			访问对象的成员的两种方式：
+			对象.成员
+			对象[‘成员名称’]：一般用在属性或者方法是动态调用，而不是固定属性和方法名称的情况下
+		</p>
+
+		<h1>
+			instanceof运算符： 对象 instanceof 类 ，如果对象是这个类创建的，返回true，否则为false
+		</h1>		
+
+		with语句：可以绑定一个默认对象，可以在调用对象成员的时候，省略对象前缀
+		with (默认对象) {
+			直接访问对象的成员
+		}
+		with效率极差，开发中不推荐使用。
+
+		h1是个标题,span是个内联元素
+
+		Array数组：数组是对象引用类型，在js中的类名叫做Array，可以存储相同类型的一组数据，一个数组对象可以存放数组元素，数组元素是用下标访问，起始下标是从0开始，js的数组是可变长数组，可以任意的添加新元素
+
+		创建数组对象的方式：
+		1.	var 变量 = new Array();  基本语法
+		2.	var 变量 = new Array(值1，值2，……);  直接初始化元素值
+		3.	var 变量 = [值1，值2，……]; 等价于上面语句，是字面量写法
+
+		数组对象的属性方法：
+		length属性：返回数组的元素个数
+		push方法：在数组末尾添加元素
+		pop方法：删除数组末尾元素
+		unshift方法：在数组头部添加元素
+		shift方法：删除数组头部的元素
+		splice方法：删除数组指定的元素
+		concat方法：合并另一个数组
+	</div>
+
+	<script type="text/javascript">
+		/*
+			天安门广场
+		*/
+		function search() {
+
+			// 获得dom对象
+			var t1 = document.getElementById('t1');
+			var container = document.getElementById('container');
+
+			// 转义用户输入html代码
+			var t1Txt = t1.value;
+
+			t1Txt = t1Txt.replace(/&/g,'&amp;');
+			t1Txt = t1Txt.replace(/</g,'&lt;');
+			t1Txt = t1Txt.replace(/>/g,'&gt;');
+			t1Txt = t1Txt.replace(/"/g,'&quot;');			
+
+			// 文本内容
+			var txt = container.innerHTML;
+
+			// 正则表达式写法1
+			// var r = eval('/(' + t1Txt + ')/g');
+
+			// 正则表达式写法2
+			var r = new RegExp('(' + t1Txt + ')','g');
+			
+			// 替换内容
+			txt = txt.replace(r,function(word) {
+
+				if (txt.match(eval('/<' + word + '>/')) != null || txt.match(eval('/<\\/' + word + '>/')) != null)
+					return word;
+				
+				return '<span style="color:red;background:orange">' + word + '</span>';
+			});
+			
+			
+			// 重新赋值
+			container.innerHTML = txt;
+
+			// console.log(txt);
+		}
+	</script>
+</body>
+</html>

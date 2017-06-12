@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<table border="1" width="500" id="dataTable">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+		</thead>	
+		<tbody>
+			
+		</tbody>
+	</table>
+	<form id="" method="post" action="">
+		<table>
+			<tr>
+				<td>编号</td>
+				<td>
+					<input type="text" id="sid">
+				</td>
+			</tr>
+			<tr>
+				<td>姓名</td>
+				<td>
+					<input type="text" id="sname">
+				</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td>
+					<input type="text" id="sage">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="增加学生" id="addBtn">
+				</td>				
+			</tr>
+		</table>
+		<p id="p1"></p>
+	</form>
+
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+			// 获取表格元素Id
+			var dataTable = document.getElementById('dataTable');
+			var addBtn = document.getElementById('addBtn');		
+
+
+			// 获取表单元素对象
+			var sid = document.getElementById('sid');
+			var sname = document.getElementById('sname');
+			var sage = document.getElementById('sage');
+
+				
+			// 添加点击事件
+			addBtn.onclick = function() {
+
+				// 增加行,tBodies[0]代表表格tbody元素
+				var tr = dataTable.tBodies[0].insertRow();
+				
+				// 添加编号单元格
+				var td = tr.insertCell();
+				td.innerHTML = sid.value;			
+				sid.value = '';
+				
+				// 添加姓名单元格
+				td = tr.insertCell();
+				td.innerHTML = sname.value;
+				sname.value = '';
+
+				// 添加年龄单元格
+				td = tr.insertCell();
+				td.innerHTML = sage.value;
+				sage.value = '';
+
+				// 添加按钮单元格
+				td = tr.insertCell();	
+				td.innerHTML = '<input type="button" value="删除">';		
+
+			}
+
+			// 表格对象单击事件委托
+			dataTable.onclick = function(e) {
+
+				e = e || window.event;
+
+				var currObj = e.target || e.srcElement; //事件源对象
+
+				if(currObj.nodeName == 'INPUT') {
+					
+					// dataTable.tBodies[0].removeChild(currObj.parentNode.parentNode);
+
+					dataTable.deleteRow(currObj.parentNode.parentNode.rowIndex);
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		
+		window.onload = function() {
+
+			// 获得元素对象
+			var t1 = document.getElementById('t1');
+			var content = document.getElementById('content');
+			
+			// 获得焦点
+			t1.focus();
+
+			// 键盘按下
+			t1.onkeydown = function(e) {
+			
+				e = e || window.event;
+				
+				// 判断是否ctrl + 回车
+				if (e.ctrlKey && e.keyCode == 13) {
+					
+					// 如果输入不为空，追加数据到显示区域
+					if (t1.value != "") {					
+						content.innerHTML += '<br>' + t1.value ; 
+						t1.value = '';
+					}
+						
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	快捷键ctrl+回车发送消息，消息追加到content中，文本框自动清空
+	<div id="content"></div>
+	<br>
+	<textarea id="t1" cols="100" rows="5"></textarea>
+</body>
+</html>

@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*轮播容器*/
+#container {
+	width: 600px;
+	height: 400px;
+	margin: 50px auto;
+	border:5px solid #789;
+	position: relative;
+	overflow: hidden;	
+}
+
+/*图片列表*/
+#list {
+	width: 3000px;
+	height: 400px;
+	position: absolute;
+	transition:all 0.8s;
+}
+
+#list img {
+	display: block;
+	float: left;
+}
+
+/*切换按钮组*/
+#buttons {
+	width: 100px;
+	height: 10px;
+	position: absolute;	
+	bottom: 20px;
+	left: 250px;
+}
+
+#buttons span {
+	width: 10px;
+	height: 10px;
+	background: #333;
+	border:1px solid #fff;	
+	float: left;
+	margin-right: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#buttons span.on {
+	background: orange;
+}
+
+/*左右箭头*/
+.arrow {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	position: absolute;
+	color: #fff;
+	background: rgb(0,0,0);
+	background: rgba(0,0,0,0.3);
+	font-size: 36px;
+	font-weight: bold;
+	top:180px;
+	display: none;
+}
+
+#prev {
+	left: 20px;
+}
+
+#next {
+	right: 20px;
+}
+
+#container:hover .arrow {
+	display: block;
+}

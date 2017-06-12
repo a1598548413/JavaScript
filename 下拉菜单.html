@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*全局统一设置*/
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+		}
+
+		ul,li {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		/*菜单容器*/
+		#menu {
+			height: 40px;
+			background: #000;
+		}
+
+		/*一级菜单*/
+		#menu ul li {
+			float: left;
+			line-height: 40px;
+			position: relative;
+		}
+
+		/*鼠标悬停li，显示内部直接子元素的ul*/
+		#menu ul li:hover > ul {
+			display: block;
+		}
+
+		#menu ul li a {
+			color: #eee;
+			display: block;
+			width: 120px;
+			text-align: center;
+		}
+
+		#menu ul li a:hover {
+			color: #000;
+			background: #eee;
+		}
+
+		/* 二级菜单 */
+		#menu ul li ul {
+			position: absolute;
+			background: #000;
+			display: none;
+		}
+
+		#menu ul li ul li {
+			float: none;
+			border-bottom: 1px solid #ccc;
+		}
+
+		/* 三级菜单 */
+		#menu ul li ul li ul {
+			left: 120px;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="menu">
+		<!-- 一级菜单开始 -->
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li>
+				<a href="#">师资介绍</a>
+				<!-- 二级菜单开始 -->
+				<ul>
+					<li><a href="#">技术老师</a></li>
+					<li><a href="#">日语老师</a></li>
+				</ul>
+				<!-- 二级菜单结束 -->
+			</li>
+			<li>
+				<a href="#">学习中心</a>
+				<!-- 二级菜单开始 -->
+				<ul>
+					<li><a href="#">在线学习</a></li>
+					<li><a href="#">案例学习</a></li>
+					<li>
+						<a href="#">平台论坛&#10132;</a>
+						<!-- 三级菜单开始 -->
+						<ul>
+							<li><a href="#">三级菜单1</a></li>
+							<li><a href="#">三级菜单2</a></li>
+							<li><a href="#">三级菜单3</a></li>
+							<li><a href="#">三级菜单4</a></li>
+						</ul>
+						<!-- 三级菜单结束 -->
+					</li>
+					<li><a href="#">疑难解答</a></li>
+				</ul>
+				<!-- 二级菜单结束 -->
+			</li>
+			<li><a href="#">就业指导</a></li>
+			<li><a href="#">关于我们</a></li>
+		</ul>
+		<!-- 一级菜单结束 -->
+	</div>
+</body>
+</html>
